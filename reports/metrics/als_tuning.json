@@ -1,0 +1,155 @@
+{
+  "grid": [
+    {
+      "factors": 32,
+      "regularization": 0.1,
+      "alpha": 1.0,
+      "half_life_days": null,
+      "fit_seconds": 10.440846920013428,
+      "recall@100": 0.04461377681780221,
+      "recall@300": 0.10631964244222705,
+      "ndcg@20": 0.024945787990791016
+    },
+    {
+      "factors": 32,
+      "regularization": 0.1,
+      "alpha": 1.0,
+      "half_life_days": 7,
+      "fit_seconds": 10.439106941223145,
+      "recall@100": 0.16934179791947476,
+      "recall@300": 0.2969767659634721,
+      "ndcg@20": 0.1212334490774968
+    },
+    {
+      "factors": 32,
+      "regularization": 0.1,
+      "alpha": 4.0,
+      "half_life_days": null,
+      "fit_seconds": 10.477946043014526,
+      "recall@100": 0.04239552574514832,
+      "recall@300": 0.10946795645850968,
+      "ndcg@20": 0.024567284777471547
+    },
+    {
+      "factors": 32,
+      "regularization": 0.1,
+      "alpha": 4.0,
+      "half_life_days": 7,
+      "fit_seconds": 10.510778903961182,
+      "recall@100": 0.16479695438956196,
+      "recall@300": 0.29874144817926584,
+      "ndcg@20": 0.1140605925689666
+    },
+    {
+      "factors": 64,
+      "regularization": 0.1,
+      "alpha": 1.0,
+      "half_life_days": null,
+      "fit_seconds": 17.552717924118042,
+      "recall@100": 0.043690593061659684,
+      "recall@300": 0.10874459796736866,
+      "ndcg@20": 0.022487118403879996
+    },
+    {
+      "factors": 64,
+      "regularization": 0.1,
+      "alpha": 1.0,
+      "half_life_days": 7,
+      "fit_seconds": 17.580199003219604,
+      "recall@100": 0.15935690461151084,
+      "recall@300": 0.2816772675240896,
+      "ndcg@20": 0.11097592829902769
+    },
+    {
+      "factors": 64,
+      "regularization": 0.1,
+      "alpha": 4.0,
+      "half_life_days": null,
+      "fit_seconds": 17.717210054397583,
+      "recall@100": 0.04113178534367857,
+      "recall@300": 0.10947491434893353,
+      "ndcg@20": 0.02147903163193992
+    },
+    {
+      "factors": 64,
+      "regularization": 0.1,
+      "alpha": 4.0,
+      "half_life_days": 7,
+      "fit_seconds": 17.584601163864136,
+      "recall@100": 0.15644897043278114,
+      "recall@300": 0.2830637357047343,
+      "ndcg@20": 0.10702889654186784
+    },
+    {
+      "factors": 128,
+      "regularization": 0.1,
+      "alpha": 1.0,
+      "half_life_days": null,
+      "fit_seconds": 38.58441114425659,
+      "recall@100": 0.042603423365408476,
+      "recall@300": 0.11038936934115023,
+      "ndcg@20": 0.02109715792257813
+    },
+    {
+      "factors": 128,
+      "regularization": 0.1,
+      "alpha": 1.0,
+      "half_life_days": 7,
+      "fit_seconds": 30.948297262191772,
+      "recall@100": 0.14198638161757687,
+      "recall@300": 0.25841510601109263,
+      "ndcg@20": 0.08863062862653925
+    },
+    {
+      "factors": 128,
+      "regularization": 0.1,
+      "alpha": 4.0,
+      "half_life_days": null,
+      "fit_seconds": 35.815298080444336,
+      "recall@100": 0.04012878529981301,
+      "recall@300": 0.11058957249546651,
+      "ndcg@20": 0.01944879903047748
+    },
+    {
+      "factors": 128,
+      "regularization": 0.1,
+      "alpha": 4.0,
+      "half_life_days": 7,
+      "fit_seconds": 28.26849603652954,
+      "recall@100": 0.138530554058682,
+      "recall@300": 0.2574709131337177,
+      "ndcg@20": 0.09123698730290097
+    },
+    {
+      "factors": 32,
+      "regularization": 0.01,
+      "alpha": 1.0,
+      "half_life_days": 7,
+      "fit_seconds": 11.682372808456421,
+      "recall@100": 0.17009409869313782,
+      "recall@300": 0.29740002147582484,
+      "ndcg@20": 0.12122289832990248
+    },
+    {
+      "factors": 32,
+      "regularization": 1.0,
+      "alpha": 1.0,
+      "half_life_days": 7,
+      "fit_seconds": 11.154145956039429,
+      "recall@100": 0.16944660889084637,
+      "recall@300": 0.29731897592251016,
+      "ndcg@20": 0.12255729741593505
+    }
+  ],
+  "selected": {
+    "factors": 32,
+    "regularization": 0.01,
+    "alpha": 1.0,
+    "half_life_days": 7,
+    "fit_seconds": 11.682372808456421,
+    "recall@100": 0.17009409869313782,
+    "recall@300": 0.29740002147582484,
+    "ndcg@20": 0.12122289832990248
+  },
+  "criterion": "val recall@100"
+}

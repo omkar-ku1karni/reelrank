@@ -1,0 +1,116 @@
+{
+  "model_version": "reelrank-R2-main-1333899d",
+  "snapshot_date": "2020-09-01",
+  "model_tag": "R2",
+  "retrieval_variant": "main",
+  "two_tower_spec": {
+    "variant": "main",
+    "negatives": "inbatch",
+    "logq": true,
+    "metadata": true,
+    "encoder": "mean",
+    "temperature": 0.05,
+    "cold_items": false,
+    "logq_scope": "day",
+    "extra": {}
+  },
+  "two_tower_checkpoint_sha256": "1333899d6517f1e7",
+  "user_vectors": "numpy_tower",
+  "id_map_version": "9abe31d617e68cfb",
+  "users": 7176,
+  "items": 10728,
+  "feature_schema": [
+    "u_log_events",
+    "u_log_pos",
+    "u_mean_wr",
+    "u_std_wr",
+    "u_complete_rate",
+    "u_skip_rate",
+    "u_pref_log_dur",
+    "u_log_days_since",
+    "u_has_history",
+    "u_recent20_wr",
+    "u_active_degree",
+    "u_log_register_days",
+    "u_is_author",
+    "u_log_follow",
+    "u_log_fans",
+    "i_log_pop",
+    "i_log_pos",
+    "i_mean_wr",
+    "i_complete_rate",
+    "i_skip_rate",
+    "i_log_recent_pop",
+    "p_log_show",
+    "p_play_rate",
+    "p_complete_rate",
+    "p_like_rate",
+    "p_share_rate",
+    "p_progress",
+    "p_has",
+    "i_log_age",
+    "i_log_dur",
+    "i_first_cat",
+    "i_n_tags",
+    "i_is_ad",
+    "tt_score",
+    "als_score",
+    "cat_aff",
+    "dur_gap",
+    "log_prior_uv",
+    "log_author_cnt",
+    "author_mean_wr"
+  ],
+  "feature_manifest_hash": "61e25300c950",
+  "ranker": "lgb_regression",
+  "ranker_kind": "lightgbm",
+  "rerank": {
+    "lam": 1.0,
+    "category_cap": null,
+    "author_cap": null,
+    "novelty_slots": 0,
+    "pop_penalty": 0.2,
+    "head": 10
+  },
+  "rerank_name": "mmr1_pop0.2",
+  "candidates": {
+    "two_tower": 200,
+    "als": 100,
+    "trending": 30,
+    "category": 20
+  },
+  "parity": {
+    "item_max_abs_diff": 1.7881393432617188e-07,
+    "user_max_abs_diff": 2.086162567138672e-07
+  },
+  "files": {
+    "als.npz": {
+      "sha256": "0215eee327348f5afc494fe05d55b64f6bc3439f0c8c771060d0fac0e17501ba",
+      "bytes": 2293506
+    },
+    "demo_truth.parquet": {
+      "sha256": "4a6c494c1e6905f275ac758e0c8f41bfc4f8cb344a96ae2642dee05d08a8527c",
+      "bytes": 3349058
+    },
+    "item_vectors.npy": {
+      "sha256": "c88e971f8810e2a223e516453a3270761afa6bd115302cb5f03df2bfa5e54556",
+      "bytes": 2746496
+    },
+    "items_meta.parquet": {
+      "sha256": "05235eed475199b4d00b0cb85574a6d05bc6730c985008af6ae99122510e0f8b",
+      "bytes": 932869
+    },
+    "ranker_lgb.txt": {
+      "sha256": "597f69a2f61adc1895ce634ff60ce2d9790ca785701c6a6430ad712f87526160",
+      "bytes": 1161226
+    },
+    "snapshot.npz": {
+      "sha256": "a6e4b0cfda7379bbb409b791fc12c5601238de93c4c4640bbb1d54302bb93647",
+      "bytes": 72316766
+    },
+    "two_tower_weights.npz": {
+      "sha256": "1428ca6f34215d404006e8845aa09103b0f36d2674ee0dd642c56799752db4ab",
+      "bytes": 5324218
+    }
+  }
+}

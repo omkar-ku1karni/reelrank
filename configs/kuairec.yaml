@@ -1,0 +1,129 @@
+# ReelRank pipeline configuration for the real KuaiRec 2.0 release.
+# Every stage reads this file; `configs/smoke.yaml` overrides it for the synthetic CI fixture.
+name: kuairec
+seed: 20200705
+
+paths:
+  raw: data/raw/KuaiRec 2.0/data
+  processed: data/processed
+  artifacts: artifacts
+  reports: reports
+  mlflow: artifacts/mlflow.db
+
+download:
+  url: https://zenodo.org/records/18164998/files/KuaiRec.zip
+  md5: 261550d472c48eff4990fb13c0e5bcf7
+  zip: data/raw/KuaiRec.zip
+
+# Calendar days are Beijing time (UTC+8), the timezone of the `time` column.
+# The big matrix is three bursts (Jul 5-12, Aug 1-10, Aug 27-Sep 5) with multi-week gaps between them.
+# Each window's model is trained only on events from days strictly before the window start.
+protocol:
+  windows:
+    r0:   {start: "2020-08-06", end: "2020-08-10", model: R0}   # ranker training data for the validation protocol
+    gap:  {start: "2020-08-27", end: "2020-08-28", model: RG}   # robustness: cutoff right after a 16-day gap
+    val:  {start: "2020-08-29", end: "2020-08-31", model: R1}   # model selection
+    test: {start: "2020-09-01", end: "2020-09-05", model: R2}   # touched once, after selection
+  dense_model: R2   # the small matrix is evaluated with the test-protocol models
+  end: "2020-09-05"
+
+labels:
+  positive_wr: 0.8        # retrieval positive: watch_ratio >= 0.8 (operational proxy, not intent)
+  complete_wr: 1.0        # completion
+  skip_wr: 0.2            # early skip
+  replay_wr: 1.0          # replay is watch_ratio > 1
+  wr_cap: 5.0             # cap for confidence / regression targets
+  # graded relevance for NDCG: 0 skip (<0.2), 1 partial (<0.8), 2 high watch (<1.0), 3 completion (>=1.0)
+  grade_edges: [0.2, 0.8, 1.0]
+  sensitivity_wr: [0.8, 1.0, 2.0]
+
+features:
+  history_len: 50
+  recent_days: 3           # "trending" lookback
+  shrink: 20               # pseudo-count for item rate shrinkage
+
+eval:
+  ks: [20, 50, 100, 300]
+  ndcg_ks: [10, 20]
+  bootstrap: 1000
+  max_eval_users: null     # null = every eligible user
+
+baselines:
+  item_knn_neighbors: 200
+  # Stage 1 searches factors x alpha x recency half-life at regularization 0.1; stage 2 tunes regularization.
+  als_grid:
+    factors: [32, 64, 128]
+    alpha: [1.0, 4.0]
+    half_life_days: [null, 7]
+    regularization: [0.01, 0.1, 1.0]
+  als_iterations: 15
+
+two_tower:
+  dim: 64
+  hidden: [256, 128]
+  dropout: 0.1
+  temperature: 0.05
+  batch_size: 1024
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 8
+  examples_per_epoch: 500000
+  sample_half_life_days: 7 # recency-weighted example sampling (ALS gained ~4x val recall from the same decay)
+  patience: 2
+  id_dropout: 0.1          # item-ID dropout so the metadata path learns (cold start)
+  n_sampled: 2048          # shared sampled negatives for uniform / frequency samplers
+  freq_power: 0.75
+  hard_k: 100              # hard negatives drawn from ALS top-k minus known positives
+  threads: 8
+  cold_item_frac: 0.05     # held-out item IDs for the cold-start experiment
+  temperature_grid: [0.05, 0.1]
+
+sequential:
+  heads: 2
+  layers: 2
+  epochs: 4               # GRU / SASRec steps cost ~8x the pooled tower on CPU
+
+candidates:
+  two_tower: 200
+  als: 100
+  trending: 30
+  category: 20
+
+ranker:
+  lgb:
+    n_estimators: 600
+    learning_rate: 0.05
+    num_leaves: 63
+    min_child_samples: 100
+    subsample: 0.8
+    colsample_bytree: 0.8
+    early_stopping: 50
+  nn:
+    hidden: [256, 128]
+    epochs: 4
+    batch_size: 2048
+    lr: 0.001
+    head_weights: {watch: 1.0, complete: 1.0, skip: 1.0}
+  max_events_per_user_day: 200
+  max_train_rows: 1500000   # training windows are subsampled by whole user-days; evaluation sets never are
+  utility_grid:
+    w_watch: [0.0, 0.5, 1.0]
+    w_complete: [0.0, 0.5, 1.0]
+    w_skip: [0.0, 0.5, 1.0]
+
+rerank:
+  lambdas: [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  category_cap: 3          # max items per first-level category in the top 10
+  author_cap: 2            # max items per creator in the top 10
+  novelty_slots: 1         # long-tail slots reserved in the top 10
+  pop_penalty: [0.0, 0.1, 0.2, 0.3]
+  # Selection protocol for the ranker and the reranker. Temporal labels exist only where the production policy
+  # showed a video, so temporal NDCG rewards reproducing that exposure; dense_val (half of the fully-labelled
+  # small-matrix users) measures preference without that confound. dense_test is never used for selection.
+  select_on: dense_val
+  max_ndcg_loss: 0.02      # operating point: most diverse setting within 2% relative NDCG@20 of relevance-only
+  k: 20
+
+serving:
+  default_k: 20
+  max_k: 100

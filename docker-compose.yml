@@ -1,0 +1,22 @@
+# docker compose run --rm pipeline   # download KuaiRec and rebuild every artifact (~1 h CPU)
+# docker compose up api app          # FastAPI on :8000, Streamlit on :8501 over the built artifacts
+x-base: &base
+  build: .
+  image: reelrank:latest
+  volumes:
+    - ./data:/app/data
+    - ./artifacts:/app/artifacts
+    - ./reports:/app/reports
+
+services:
+  pipeline:
+    <<: *base
+    command: ["make", "download", "pipeline", "PY=uv run --no-dev python"]
+    profiles: ["pipeline"]
+  api:
+    <<: *base
+    ports: ["8000:8000"]
+  app:
+    <<: *base
+    command: ["uv", "run", "--no-dev", "streamlit", "run", "app/Home.py", "--server.address", "0.0.0.0"]
+    ports: ["8501:8501"]

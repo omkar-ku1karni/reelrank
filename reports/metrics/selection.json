@@ -1,0 +1,17 @@
+{
+  "retrieval_variant": "main",
+  "retrieval_criterion": "val recall@100",
+  "retrieval_val_recall@100": 0.2857405894856778,
+  "ranker": "lgb_regression",
+  "rerank": {
+    "lam": 1.0,
+    "category_cap": null,
+    "author_cap": null,
+    "novelty_slots": 0,
+    "pop_penalty": 0.2,
+    "head": 10
+  },
+  "rerank_name": "mmr1_pop0.2",
+  "ranker_selected_on": "dense_val",
+  "rerank_selected_on": "dense_val"
+}

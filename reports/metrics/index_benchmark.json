@@ -1,0 +1,236 @@
+{
+  "items": 10728,
+  "dim": 64,
+  "k": 300,
+  "queries": 2000,
+  "faiss_threads": 1,
+  "machine": "arm64 / macOS-26.6-arm64-arm-64bit",
+  "faiss_version": "1.16.0",
+  "indexes": [
+    {
+      "name": "numpy exact (matmul + argpartition)",
+      "build_s": 0.0,
+      "memory_mb": 2.619140625,
+      "recall@300_vs_exact": 1.0,
+      "single": {
+        "p50_ms": 0.19724999947356991,
+        "p95_ms": 0.24787709935480962
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 39.92681250019814,
+        "p95_ms": 40.41941285213397,
+        "queries_per_s": 6411.731464882892
+      }
+    },
+    {
+      "name": "faiss IndexFlatIP (exact)",
+      "build_s": 0.0026469999975233804,
+      "memory_mb": 2.6191835403442383,
+      "recall@300_vs_exact": 1.0,
+      "single": {
+        "p50_ms": 0.2029369989031693,
+        "p95_ms": 0.22637704951193882
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 50.33741649822332,
+        "p95_ms": 50.53013814685983,
+        "queries_per_s": 5085.680152238954
+      }
+    },
+    {
+      "name": "faiss HNSW M=16 efSearch=64",
+      "build_s": 0.8242417920009757,
+      "memory_mb": 4.092737197875977,
+      "recall@300_vs_exact": 0.6024666666666667,
+      "single": {
+        "p50_ms": 0.06335450234473683,
+        "p95_ms": 0.07652290041733066
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 14.825208500042208,
+        "p95_ms": 14.952822601844673,
+        "queries_per_s": 17267.885304902873
+      }
+    },
+    {
+      "name": "faiss HNSW M=16 efSearch=128",
+      "build_s": 0.8242417920009757,
+      "memory_mb": 4.092737197875977,
+      "recall@300_vs_exact": 0.8602466666666667,
+      "single": {
+        "p50_ms": 0.1232919985341141,
+        "p95_ms": 0.13917230080551235
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 30.222416999095003,
+        "p95_ms": 30.48859549980989,
+        "queries_per_s": 8470.533644204095
+      }
+    },
+    {
+      "name": "faiss HNSW M=16 efSearch=300",
+      "build_s": 0.8242417920009757,
+      "memory_mb": 4.092737197875977,
+      "recall@300_vs_exact": 0.9978233333333333,
+      "single": {
+        "p50_ms": 0.22170800002641045,
+        "p95_ms": 0.23374999746010872
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 55.90054149979551,
+        "p95_ms": 56.53726010223181,
+        "queries_per_s": 4579.562078140808
+      }
+    },
+    {
+      "name": "faiss HNSW M=16 efSearch=600",
+      "build_s": 0.8242417920009757,
+      "memory_mb": 4.092737197875977,
+      "recall@300_vs_exact": 0.999885,
+      "single": {
+        "p50_ms": 0.5643544991471572,
+        "p95_ms": 0.5979818488413002
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 143.57597900016117,
+        "p95_ms": 144.28992950033717,
+        "queries_per_s": 1783.0280648806347
+      }
+    },
+    {
+      "name": "faiss HNSW M=32 efSearch=64",
+      "build_s": 0.8175357500003884,
+      "memory_mb": 5.399965286254883,
+      "recall@300_vs_exact": 0.6028066666666666,
+      "single": {
+        "p50_ms": 0.06418749762815423,
+        "p95_ms": 0.07888125019235304
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 15.219104499919922,
+        "p95_ms": 15.383665997251228,
+        "queries_per_s": 16820.96341485447
+      }
+    },
+    {
+      "name": "faiss HNSW M=32 efSearch=128",
+      "build_s": 0.8175357500003884,
+      "memory_mb": 5.399965286254883,
+      "recall@300_vs_exact": 0.8676866666666667,
+      "single": {
+        "p50_ms": 0.1256039995496394,
+        "p95_ms": 0.14233509955374757
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 30.738874500457314,
+        "p95_ms": 30.959843748860294,
+        "queries_per_s": 8328.21644124255
+      }
+    },
+    {
+      "name": "faiss HNSW M=32 efSearch=300",
+      "build_s": 0.8175357500003884,
+      "memory_mb": 5.399965286254883,
+      "recall@300_vs_exact": 0.9976616666666667,
+      "single": {
+        "p50_ms": 0.2268330008519115,
+        "p95_ms": 0.24208299873862416
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 56.170353998822975,
+        "p95_ms": 56.76528815201891,
+        "queries_per_s": 4557.56429815921
+      }
+    },
+    {
+      "name": "faiss HNSW M=32 efSearch=600",
+      "build_s": 0.8175357500003884,
+      "memory_mb": 5.399965286254883,
+      "recall@300_vs_exact": 0.9997033333333334,
+      "single": {
+        "p50_ms": 0.5635209981846856,
+        "p95_ms": 0.5945104510828969
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 143.75720900170563,
+        "p95_ms": 145.03214019769075,
+        "queries_per_s": 1780.780259840483
+      }
+    },
+    {
+      "name": "faiss IVF-Flat nlist=100 nprobe=5",
+      "build_s": 0.016149916998983826,
+      "memory_mb": 2.7262983322143555,
+      "recall@300_vs_exact": 0.7146016666666667,
+      "single": {
+        "p50_ms": 0.029999999242136255,
+        "p95_ms": 0.034879150007327546
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 6.619457999477163,
+        "p95_ms": 6.8033214502065675,
+        "queries_per_s": 38673.86121646517
+      }
+    },
+    {
+      "name": "faiss IVF-Flat nlist=100 nprobe=10",
+      "build_s": 0.016149916998983826,
+      "memory_mb": 2.7262983322143555,
+      "recall@300_vs_exact": 0.9296099999999999,
+      "single": {
+        "p50_ms": 0.04354150041763205,
+        "p95_ms": 0.04862914920522598
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 9.891604000586085,
+        "p95_ms": 9.99717080139817,
+        "queries_per_s": 25880.534641786286
+      }
+    },
+    {
+      "name": "faiss IVF-Flat nlist=100 nprobe=20",
+      "build_s": 0.016149916998983826,
+      "memory_mb": 2.7262983322143555,
+      "recall@300_vs_exact": 0.9918466666666667,
+      "single": {
+        "p50_ms": 0.05345799945644103,
+        "p95_ms": 0.06108924935688265
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 12.32287449965952,
+        "p95_ms": 12.412437200146087,
+        "queries_per_s": 20774.373706968556
+      }
+    },
+    {
+      "name": "faiss IVF-Flat nlist=100 nprobe=50",
+      "build_s": 0.016149916998983826,
+      "memory_mb": 2.7262983322143555,
+      "recall@300_vs_exact": 0.9997983333333333,
+      "single": {
+        "p50_ms": 0.08195800182875246,
+        "p95_ms": 0.08920899927034043
+      },
+      "batched": {
+        "batch": 256,
+        "p50_ms": 19.182854499376845,
+        "p95_ms": 19.403439899906516,
+        "queries_per_s": 13345.250573021662
+      }
+    }
+  ],
+  "note": "Exact search over this catalog takes well under a millisecond per query, so serving uses exact NumPy search; approximate indexes trade recall for speed they are not needed for here."
+}

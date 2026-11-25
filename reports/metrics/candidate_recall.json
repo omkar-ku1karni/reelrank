@@ -1,0 +1,45 @@
+{
+  "retrieval_variant": "main",
+  "val": {
+    "mean_pool_size": 273.4948905109489,
+    "recall_union": 0.4442939909558585,
+    "recall_two_tower": 0.4161070123072282,
+    "recall_als": 0.17009409869313782,
+    "recall_trending": 0.04494780426665355,
+    "recall_category": 0.03952313084101392,
+    "source_share": {
+      "two_tower": 0.7312750875394995,
+      "als": 0.3656375437697498,
+      "trending": 0.10969126313092493,
+      "category": 0.07309815099496114
+    }
+  },
+  "test": {
+    "mean_pool_size": 263.1371862230006,
+    "recall_union": 0.484593206397196,
+    "recall_two_tower": 0.4460888978599502,
+    "recall_als": 0.2254793047770791,
+    "recall_trending": 0.056731076531360995,
+    "recall_category": 0.041710131943606156,
+    "source_share": {
+      "two_tower": 0.7600598108946344,
+      "als": 0.3800299054473172,
+      "trending": 0.11400897163419516,
+      "category": 0.07571591156151693
+    }
+  },
+  "dense": {
+    "mean_pool_size": 308.82707299787387,
+    "recall_union": 0.11658586157947645,
+    "recall_two_tower": 0.0823176768706873,
+    "recall_als": 0.03550875533805124,
+    "recall_trending": 0.009081335270589245,
+    "recall_category": 0.006185406756828527,
+    "source_share": {
+      "two_tower": 0.6476116166194307,
+      "als": 0.32380580830971534,
+      "trending": 0.0971417424929146,
+      "category": 0.06476116166194307
+    }
+  }
+}

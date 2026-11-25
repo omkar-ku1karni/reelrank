@@ -1,0 +1,87 @@
+{
+  "retrieval_variant": "main",
+  "features": [
+    "u_log_events",
+    "u_log_pos",
+    "u_mean_wr",
+    "u_std_wr",
+    "u_complete_rate",
+    "u_skip_rate",
+    "u_pref_log_dur",
+    "u_log_days_since",
+    "u_has_history",
+    "u_recent20_wr",
+    "u_active_degree",
+    "u_log_register_days",
+    "u_is_author",
+    "u_log_follow",
+    "u_log_fans",
+    "i_log_pop",
+    "i_log_pos",
+    "i_mean_wr",
+    "i_complete_rate",
+    "i_skip_rate",
+    "i_log_recent_pop",
+    "p_log_show",
+    "p_play_rate",
+    "p_complete_rate",
+    "p_like_rate",
+    "p_share_rate",
+    "p_progress",
+    "p_has",
+    "i_log_age",
+    "i_log_dur",
+    "i_first_cat",
+    "i_n_tags",
+    "i_is_ad",
+    "tt_score",
+    "als_score",
+    "cat_aff",
+    "dur_gap",
+    "log_prior_uv",
+    "log_author_cnt",
+    "author_mean_wr"
+  ],
+  "r0_observed": {
+    "rows": 2762505,
+    "user_days": 32749,
+    "grade_dist": [
+      485219,
+      1055536,
+      324441,
+      897309
+    ]
+  },
+  "val_observed": {
+    "rows": 1057990,
+    "user_days": 19927,
+    "grade_dist": [
+      191816,
+      405372,
+      117736,
+      343066
+    ]
+  },
+  "test_observed": {
+    "rows": 1115945,
+    "user_days": 32729,
+    "grade_dist": [
+      206085,
+      427217,
+      123327,
+      359316
+    ]
+  },
+  "val_candidates": {
+    "rows": 1873440,
+    "relevant_share": 0.07523379451703817
+  },
+  "test_candidates": {
+    "rows": 1803016,
+    "relevant_share": 0.09013896715281507
+  },
+  "dense_candidates": {
+    "rows": 435755,
+    "relevant_share": 0.5852233479822377
+  }
+}

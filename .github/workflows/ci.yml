@@ -1,0 +1,28 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      REELRANK_NO_MLFLOW: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - name: Lint
+        run: make lint
+      - name: Full pipeline on the synthetic KuaiRec-shaped fixture (every stage, own process each)
+        run: make smoke
+      - name: "Tests (LightGBM side, PyTorch side, FAISS side: one process per native runtime)"
+        run: make test
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t reelrank .

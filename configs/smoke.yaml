@@ -1,0 +1,53 @@
+# Synthetic fixture (scripts/make_fixtures.py): exercises every stage in about a minute, for CI and tests.
+extends: kuairec.yaml
+name: smoke
+seed: 7
+paths:
+  raw: data/fixture/raw
+  processed: data/fixture/processed
+  artifacts: data/fixture/artifacts
+  reports: data/fixture/reports
+  mlflow: data/fixture/artifacts/mlflow.db
+eval:
+  bootstrap: 100
+baselines:
+  item_knn_neighbors: 30
+  als_grid:
+    factors: [8]
+    alpha: [1.0]
+    half_life_days: [null, 7]
+    regularization: [0.1, 1.0]
+  als_iterations: 5
+two_tower:
+  dim: 16
+  hidden: [32, 16]
+  batch_size: 64
+  epochs: 2
+  examples_per_epoch: 4000
+  n_sampled: 64
+  hard_k: 10
+  threads: 2
+sequential:
+  epochs: 1
+candidates:
+  two_tower: 30
+  als: 20
+  trending: 10
+  category: 5
+ranker:
+  lgb:
+    n_estimators: 30
+    num_leaves: 7
+    min_child_samples: 5
+    early_stopping: 10
+  nn:
+    hidden: [32, 16]
+    epochs: 2
+    batch_size: 256
+  utility_grid:
+    w_watch: [0.0, 1.0]
+    w_complete: [0.0, 1.0]
+    w_skip: [0.0, 1.0]
+rerank:
+  lambdas: [0.7, 1.0]
+  pop_penalty: [0.0, 0.2]

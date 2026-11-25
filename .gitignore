@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+# Raw data is downloaded from Zenodo (KuaiRec 2.0, CC BY 4.0 on Zenodo) and verified by MD5; everything else is
+# rebuilt by `make all`. Reports, figures and screenshots are committed.
+/data/
+artifacts/*
+!artifacts/manifest.json

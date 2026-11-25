@@ -1,0 +1,41 @@
+{
+  "note": "offline replay of the test users through the serving engine; not production traffic",
+  "requests": 6989,
+  "latency_ms": {
+    "p50": 5.0059160003002035,
+    "p95": 5.8659062520746375,
+    "p99": 6.134384588513058
+  },
+  "stage_p95_ms": {
+    "candidates_ms": 1.0826270499819657,
+    "features_ms": 0.3672520524560241,
+    "ranker_ms": 4.20248714981426,
+    "rerank_ms": 0.20558400137815624
+  },
+  "fallback_rate": {
+    "unknown_user": 0.019602232078981256
+  },
+  "score_psi_val_to_test": 0.014877465310334362,
+  "missingness": {
+    "no_platform_stats": {
+      "val": 0.06709208728328636,
+      "test": 0.016740284057379415
+    },
+    "user_without_history": {
+      "val": 0.0,
+      "test": 0.0
+    },
+    "no_creator_history": {
+      "val": 0.7194615253224016,
+      "test": 0.7148893853410064
+    }
+  },
+  "category_mix_js_bits": 0.06567020582225194,
+  "item_exposure_js_bits": 0.4661110517697658,
+  "thresholds": {
+    "score_psi_alert": 0.25,
+    "fallback_rate_alert": 0.05,
+    "latency_p95_ms_alert": 100
+  },
+  "alerts": []
+}

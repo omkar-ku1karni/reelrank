@@ -1,0 +1,63 @@
+[project]
+name = "reelrank"
+version = "0.1.0"
+description = "ReelRank: a multi-stage short-video recommender on KuaiRec (popularity/ALS baselines, PyTorch two-tower retrieval, FAISS candidate generation, LightGBM + multitask neural ranking, MMR reranking) with leakage-safe temporal and dense evaluation."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "duckdb>=2.0.1",
+    "faiss-cpu>=1.16.0",
+    "fastapi>=0.165.0",
+    "implicit>=0.7.3",
+    "lightgbm>=4.7.0",
+    "matplotlib>=3.11.2",
+    "mlflow>=3.18.0",
+    "numpy>=2.4.6",
+    "pandas>=3.1.1",
+    "plotly>=7.2.0",
+    "polars>=2.2.0",
+    "pyarrow>=26.0.1",
+    "pyyaml>=6.0.4",
+    "scipy>=1.17.1",
+    "streamlit>=1.67.0",
+    "torch>=2.15.0",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "playwright>=1.65.2",
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/reelrank"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E731", "B905", "B023", "UP040", "E741"]  # U / I are the user / item counts
+
+[tool.ruff.lint.per-file-ignores]
+"src/reelrank/evaluation/report.py" = ["E501"]  # long generated sentences
+
+# Linux (CI, Docker) installs the CPU-only PyTorch build instead of the multi-GB CUDA one.
+[tool.uv.sources]
+torch = [{ index = "pytorch-cpu", marker = "sys_platform == 'linux'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
