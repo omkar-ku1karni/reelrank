@@ -97,7 +97,7 @@ strong { color: var(--ink); font-weight: 650; }
 .btn:hover { border-color: var(--ember); color: var(--ember); transform: none; }
 .btn.primary:hover { background: rgb(106 108 246 / .42); color: var(--ink); }
 .btn svg { width: 15px; height: 15px; }
-.window { background: var(--surface); border: 1px solid rgb(191 210 255 / .28); border-radius: 6px; overflow: hidden; box-shadow: 0 30px 60px -30px rgb(0 0 0 / .75); }
+.window { background: var(--surface); border: 1px solid rgb(191 210 255 / .28); border-radius: 6px; overflow: hidden; }
 .window-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--line); font: 500 10px var(--font-body); color: var(--muted); }
 .window-bar b { font-weight: 600; color: var(--accent); }
 .window img { display: block; width: 100%; height: auto; max-height: 640px; object-fit: contain; background: var(--surface); }
