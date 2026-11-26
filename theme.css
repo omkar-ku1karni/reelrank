@@ -102,14 +102,18 @@ strong { color: var(--ink); font-weight: 650; }
 .window-bar b { font-weight: 600; color: var(--accent); }
 .window img { display: block; width: 100%; height: auto; max-height: 640px; object-fit: contain; background: var(--surface); }
 
-/* stats: plain figures in sentences' colour, no oversized headline numbers */
-.stats { padding-block: 44px 8px; }
+/* stats: no headline numbers. Each figure leads its sentence at body size, tinted like the portfolio */
+.stats { padding-block: 40px 8px; }
 .stats .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
-.stat { padding: 4px 22px 4px 22px; border-left: 1px solid var(--line); }
+.stat { padding: 4px 22px 4px 22px; border-left: 1px solid var(--line); font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
 .stat:first-child { border-left: 0; padding-left: 0; }
-.stat .num { font: 500 1.35rem/1.15 var(--font-display); font-stretch: 80%; color: var(--accent); }
-.stat .num em { font-style: normal; color: var(--muted); }
-.stat p { margin-top: 8px; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+.stat .num { display: inline; font: 650 14.5px/1.55 var(--font-body); color: var(--accent); letter-spacing: 0; white-space: nowrap; }
+.stat .num em { font-style: normal; color: var(--muted); font-weight: 500; }
+.stat p { display: inline; margin: 0 0 0 .3em; font-size: 14.5px; line-height: 1.55; color: var(--ink-2); }
+
+/* numbers inside sentences (wrapped by numbers.js), tinted the same way */
+.n { color: var(--accent); font-weight: 650; white-space: nowrap; }
+strong .n { color: var(--accent); }
 
 /* sections */
 section.block { padding-block: 88px 0; }
